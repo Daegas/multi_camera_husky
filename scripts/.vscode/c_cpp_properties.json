@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/dara/catkin_ws/devel/include",
+        "/opt/ros/kinetic/include",
+        "/home/dara/catkin_ws/src/beginner_tutorials/include",
+        "/home/dara/catkin_ws/src/husky_test/include",
+        "/home/dara/catkin_ws/src/multi_camera_husky/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}
