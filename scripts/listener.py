@@ -7,6 +7,7 @@ import rospy
 from sensor_msgs.msg import  CameraInfo, Image
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
+from matplotlib import pyplot as plt
 
 # Instantiate CvBridge
 bridge = CvBridge()
@@ -19,19 +20,20 @@ for i in range(NHus):
     cams_info.append([])
 
 
-def callback(msg, N):
+def callback(msg, n):
     try:
         #Convert to openCV2
         cv2_img=bridge.imgmsg_to_cv2(msg,"bgr8")
     except CvBridgeError, e:
         print(e)
     else:
-        #Do whatever
-        cams_rgb[N]=cv2_img
-        Analize()        
+        cams_rgb[n]=cv2_img 
+        #AnalizeImages()        
 
-def Analize():
-    for n in len(cams_rgb):
+def AnalizeImages():
+    for n in range(len(cams_rgb)):
+        plt.imshow(cams_rgb[n])
+
 
 
 def main():
@@ -40,6 +42,7 @@ def main():
     for n in range(NHus):
         image_topic = "/husky" + str(n) + "/camera/rgb/"
         sub_cam_info = rospy.Subscriber(image_topic +"image_raw", Image, callback,n)
+        
         #TODO:Implement camera_info
         #sub_rgb=rospy.Subscriber(image_topic + "camera_info", CameraInfo)
 
