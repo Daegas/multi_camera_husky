@@ -19,8 +19,10 @@ if train== True:
 else:
     path='../husky_images/test/' 
 
+
+
 for i in range(2):
-    for j in range(1,7):
+    for j in range(1,21):
         print('Read image', i ,'_', j)
         path += str(i) + '_' + str(j) + '.jpg'
         img=cv2.imread(path)
