@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 # Instantiate CvBridge
 bridge = CvBridge()
 #Variables
-NHus=int(sys.argv[1]) if len(sys.argv) > 1 else 1
+NHus=int(sys.argv[1]) if len(sys.argv) > 1 else 1 #Husky to be used
 cams_rgb=[]
 cams_info=[]
 for i in range(NHus):
@@ -39,12 +39,11 @@ def AnalizeImages():
 def main():
     rospy.init_node('camera_listener', anonymous=True)
 
-    for n in range(NHus):
-        image_topic = "/husky" + str(n) + "/camera/rgb/"
-        sub_cam_info = rospy.Subscriber(image_topic +"image_raw", Image, callback,n)
+    image_topic = "/husky" + str(n) + "/camera/rgb/"
+    sub_cam_info = rospy.Subscriber(image_topic +"image_raw", Image, callback,n)
         
-        #TODO:Implement camera_info
-        #sub_rgb=rospy.Subscriber(image_topic + "camera_info", CameraInfo)
+    #TODO:Implement camera_info
+    #sub_rgb=rospy.Subscriber(image_topic + "camera_info", CameraInfo)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()

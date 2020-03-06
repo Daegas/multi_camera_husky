@@ -12,24 +12,21 @@ from matplotlib import pyplot as plt
 # Instantiate CvBridge
 bridge = CvBridge()
 #Variables
-Hn=1 #Husky Number to use
+#Camera= 0, no camera
+camera=1
+#Husky to subscribe to 
+Hn=0 
 
 
 def callback(msg):
     try:
         #Convert to openCV2
         cv2_img=bridge.imgmsg_to_cv2(msg,"bgr8")
-    except CvBridgeError, e:
+    except CvBridgeError as e:
         print(e)
     else:
-        cv2.imshow('image',cv2_img)
-        k=cv2.waitKey(0)
-        #if spacebar pressed
-        if k == 32:
-            #Save images
-            i=input()
-            path='../husky_images/husky' + str(Hn) + '_' + str(i) + '.jpg' 
-            cv2.imwrite(path,cv2_img) 
+        cv2.imshow('iamge',cv2_img)
+        
 
 
 def main(): 
