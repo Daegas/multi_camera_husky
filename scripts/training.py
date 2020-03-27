@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Robot Detection 
 # Author: Dara Gama <de.gamasandoval@ugto.mx>
@@ -11,6 +11,7 @@ import cv2
 #Variables
 images=[]
 train=True
+stop=27
 
 
 #####
@@ -22,7 +23,7 @@ else:
 
 
 for i in range(2):
-    for j in range(1,21):
+    for j in range(1,stop):
         print('Read image', i ,'_', j)
         path += str(i) + '_' + str(j) + '.jpg'
         img=cv2.imread(path)

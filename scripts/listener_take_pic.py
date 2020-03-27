@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 #Converting ROS images and saving image
 #https://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython
+#Command
 #rosrun multi_camera_husky listener_take_pic.py <Husky to subscribe> <camera true/false> <train true/false>
+#rosrun multi_camera_husky listener_take_pic.py 0 true true
 
 
 from __future__ import print_function
@@ -16,11 +18,11 @@ from cv_bridge import CvBridge, CvBridgeError
 
 
 ####-------Variables
-#Variable i... modify
+#Variable i... modify to the one is next
 
 
 #Husky Number to subscribe
-Hn=sys.argv[1]
+Hn=int(sys.argv[1])
 text='\n\nConfiguration: \n \tHusky' + str(Hn)
 
 #Camera
@@ -53,7 +55,7 @@ bridge = CvBridge()
 class image_converter:
 
   def __init__(self,Hn):
-    self.i=1
+    self.i=21
     image_topic = "/husky" + str(Hn) + "/camera/rgb/"
     self.bridge = CvBridge()
     self.image_sub = rospy.Subscriber(image_topic +"image_raw",Image,self.callback)
@@ -77,6 +79,7 @@ class image_converter:
             path='../husky_images/test/' + str(cam) + '_' + str(self.i) + '.jpg' 
         cv2.imwrite(path,cv_image)
         self.i+=1
+	print('Saved image:', path)
 
 def main(args):
   ic = image_converter(Hn)
