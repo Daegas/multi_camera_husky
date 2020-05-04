@@ -55,7 +55,7 @@ bridge = CvBridge()
 class image_converter:
 
   def __init__(self,Hn):
-    self.i=21
+    self.i=28
     image_topic = "/husky" + str(Hn) + "/camera/rgb/"
     self.bridge = CvBridge()
     self.image_sub = rospy.Subscriber(image_topic +"image_raw",Image,self.callback)
